@@ -8,6 +8,7 @@ const insecurity = require('../lib/insecurity')
 const utils = require('../lib/utils')
 const cache = require('../data/datacache')
 const challenges = cache.challenges
+const urlUserProfile = "htmledit.squarefree.com"
 
 module.exports = function updateUserProfile () {
   return (req, res, next) => {
@@ -16,8 +17,8 @@ module.exports = function updateUserProfile () {
     if (loggedInUser) {
       models.User.findByPk(loggedInUser.data.id).then(user => {
         utils.solveIf(challenges.csrfChallenge, () => {
-          return ((req.headers.origin && req.headers.origin.includes('://htmledit.squarefree.com')) ||
-            (req.headers.referer && req.headers.referer.includes('://htmledit.squarefree.com'))) &&
+          return ((req.headers.origin && req.headers.origin.includes(urlUserProfile)) ||
+            (req.headers.referer && req.headers.referer.includes(urlUserProfile)) &&
             req.body.username !== user.username
         })
         user.update({ username: req.body.username }).then(newuser => {
