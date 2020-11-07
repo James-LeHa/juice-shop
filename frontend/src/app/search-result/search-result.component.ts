@@ -134,7 +134,7 @@ export class SearchResultComponent implements OnDestroy, AfterViewInit {
   }
 
   filterTable () {
-    let queryParam: string = this.route.snapshot.queryParams.q
+    let queryParam: string = "queryparamnoUserInput"
     if (queryParam) {
       queryParam = queryParam.trim()
       this.ngZone.runOutsideAngular(() => {
