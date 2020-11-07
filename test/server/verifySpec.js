@@ -254,7 +254,8 @@ describe('verify', () => {
       Header: { "alg": "none", "typ": "JWT" }
       Payload: { "data": { "email": "jwtn3d@juice-sh.op" }, "iat": 1508639612, "exp": 9999999999 }
        */
-      this.req.headers = { authorization: 'Bearer eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJkYXRhIjp7ImVtYWlsIjoiand0bjNkQGp1aWNlLXNoLm9wIn0sImlhdCI6MTUwODYzOTYxMiwiZXhwIjo5OTk5OTk5OTk5fQ.' }
+      var headerValue = '';
+      this.req.headers = { authorization: 'Bearer ' + headerValue }
 
       verify.jwtChallenges()(this.req, this.res, this.next)
 
