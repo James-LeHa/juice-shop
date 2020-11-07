@@ -43,6 +43,13 @@ function handleZipFileUpload ({ file }, res, next) {
               .pipe(unzipper.Parse())
               .on('entry', function (entry) {
                 const fileName = entry.path
+                if (fileName.indexOf('..') == -1) {
+                    entry.pipe(fs.createWriteStream(fileName));
+                  }
+                  else {
+                    console.log('skipping bad path', fileName);
+                    break;
+                  }
                 const absolutePath = path.resolve('uploads/complaints/' + fileName)
                 utils.solveIf(challenges.fileWriteChallenge, () => { return absolutePath === path.resolve('ftp/legal.md') })
                 if (absolutePath.includes(path.resolve('.'))) {
