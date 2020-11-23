@@ -8,4 +8,4 @@ queries:
     
 paths-ignore: 
   - node_modules
-  - 'test'
+  - test
