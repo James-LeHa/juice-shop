@@ -1,4 +1,4 @@
-- import: codeql-suites/java-security-and-quality.qls
-  from: codeql-java
+- import: codeql-suites/javascript-code-scanning.qls
+  from: codeql-javascript
 - exclude:
     id: js/sql-injection
