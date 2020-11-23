@@ -3,7 +3,8 @@ name: "My CodeQL config"
 disable-default-queries: false
 
 queries:
-  - uses: './.github/codeql/js_exclude.qls'
+  - name: Use custom qls file, excluding a certain one
+    uses: './.github/codeql/js_exclude.qls'
 
 paths-ignore: 
   - node_modules
